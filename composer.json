@@ -1,0 +1,31 @@
+{
+    "name": "qlimix/messagebus",
+    "type": "package",
+    "license": "LGPL-3.0-only",
+    "authors": [
+        {
+            "name": "frank",
+            "email": "frank@qlimix.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Qlimix\\MessageBus\\": "src/"
+        }
+    },
+    "require": {
+    },
+    "require-dev": {
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "suggest": {
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@bitbucket.org:qlimix/uuid.git"
+        }
+    ]
+}
