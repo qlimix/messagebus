@@ -2,14 +2,18 @@
 
 namespace Qlimix\MessageBus\MessageBus;
 
-use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandler;
+use Qlimix\MessageBus\Message\MessageInterface;
+use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandlerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareInterface;
 use Qlimix\MessageBus\MessageBusInterface;
 
-final class MiddlewareMessageBus implements MessageBusInterface
+final class MiddlewareMessageBus implements MessageBusInterface, MiddlewareHandlerInterface
 {
     /** @var MiddlewareInterface[] */
     private $middleware;
+
+    /** @var int */
+    private $pointer = -1;
 
     /**
      * @param MiddlewareInterface[] $middleware
@@ -22,10 +26,24 @@ final class MiddlewareMessageBus implements MessageBusInterface
     /**
      * @inheritDoc
      */
-    public function handle($message): void
+    public function handle(MessageInterface $message): void
     {
-        $handler = new MiddlewareHandler($this->middleware);
+        try {
+            $this->next($message, $this);
+        } catch (\Throwable $exception) {
+        }
+    }
 
-        $handler->next($message, $handler);
+    /**
+     * @inheritDoc
+     */
+    public function next(MessageInterface $message, MiddlewareHandlerInterface $handler): void
+    {
+        ++$this->pointer;
+        if (!isset($this->middleware[$this->pointer])) {
+            return;
+        }
+
+        $this->middleware[$this->pointer]->handle($message, $this);
     }
 }

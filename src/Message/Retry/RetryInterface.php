@@ -2,14 +2,16 @@
 
 namespace Qlimix\MessageBus\Message\Retry;
 
+use Qlimix\MessageBus\Message\MessageInterface;
+
 interface RetryInterface
 {
     /**
      * @param int $retryCount
      *
-     * @return static
+     * @return MessageInterface
      */
-    public function withRetryCount(int $retryCount);
+    public function withRetryCount(int $retryCount): MessageInterface;
 
     /**
      * @param \DateTimeImmutable $retryUntilTime
@@ -35,12 +37,15 @@ interface RetryInterface
      */
     public function getRetryTime(): ?\DateTimeImmutable;
 
+    /**
+     * Account for a retry
+     */
     public function retried(): void;
 
     /**
-     * Get count number of retries.
+     * Get number of retries.
      *
      * @return int
      */
-    public function getCountRetried(): int;
+    public function getRetries(): int;
 }

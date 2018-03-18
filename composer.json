@@ -16,6 +16,9 @@
     "require": {
     },
     "require-dev": {
+        "qlimix/logging": "dev-master",
+        "qlimix/queue": "dev-master",
+        "qlimix/uuid": "dev-master"
     },
     "config": {
         "sort-packages": true
@@ -23,6 +26,14 @@
     "suggest": {
     },
     "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@bitbucket.org:qlimix/logging.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@bitbucket.org:qlimix/queue.git"
+        },
         {
             "type": "vcs",
             "url":  "git@bitbucket.org:qlimix/uuid.git"

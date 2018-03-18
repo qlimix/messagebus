@@ -2,6 +2,8 @@
 
 namespace Qlimix\MessageBus\Message\Schedule;
 
+use Qlimix\MessageBus\Message\MessageInterface;
+
 interface SchedulerInterface
 {
     /**
@@ -12,9 +14,9 @@ interface SchedulerInterface
     public function withScheduleTime(\DateTimeImmutable $scheduleTime = null);
 
     /**
-     * @return static
+     * @return MessageInterface
      */
-    public function removeScheduleTime();
+    public function removeScheduleTime(): MessageInterface;
 
     /**
      * @return bool

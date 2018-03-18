@@ -4,6 +4,7 @@ namespace Qlimix\MessageBus\MessageBus\Middleware;
 
 use Qlimix\MessageBus\Locator\HandlerLocatorInterface;
 use Qlimix\MessageBus\Locator\ServiceLocatorInterface;
+use Qlimix\MessageBus\Message\MessageInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 
 final class DelegateToHandlerMiddleware implements MiddlewareInterface
@@ -27,7 +28,7 @@ final class DelegateToHandlerMiddleware implements MiddlewareInterface
     /**
      * @inheritDoc
      */
-    public function handle($message, MiddlewareHandlerInterface $handler): void
+    public function handle(MessageInterface $message, MiddlewareHandlerInterface $handler): void
     {
         try {
             $locatedHandler = $this->locator->getHandler(\get_class($message));

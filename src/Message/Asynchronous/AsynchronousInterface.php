@@ -2,6 +2,8 @@
 
 namespace Qlimix\MessageBus\Message\Asynchronous;
 
+use Qlimix\MessageBus\Message\MessageInterface;
+
 interface AsynchronousInterface
 {
     /**
@@ -10,7 +12,12 @@ interface AsynchronousInterface
     public function isAsynchronous(): bool;
 
     /**
-     * @return static
+     * @return MessageInterface
      */
-    public function withAsynchronous();
+    public function withAsynchronous(): MessageInterface;
+
+    /**
+     * @return MessageInterface
+     */
+    public function withSynchronous(): MessageInterface;
 }
