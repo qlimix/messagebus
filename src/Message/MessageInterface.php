@@ -14,18 +14,9 @@ interface MessageInterface
      * This is used to deserialize the message back into
      *  the message scheme object on the processing side.
      *
-     * For example: A message object is called 'HelloWorldCommand'
-     * This method would return namespace.domain.command.hello_world
-     *  or a similar construction.
-     *
-     * A message reconstructing service could lookup the message name
-     *  and build up the message on their side.
-     *
-     * Preferably this would be language independent.
-     *
      * @return string
      */
-    public static function getName(): string;
+    public function getName(): string;
 
     /**
      * @return array

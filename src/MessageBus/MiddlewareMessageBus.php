@@ -41,6 +41,7 @@ final class MiddlewareMessageBus implements MessageBusInterface, MiddlewareHandl
     {
         ++$this->pointer;
         if (!isset($this->middleware[$this->pointer])) {
+            $this->pointer = -1;
             return;
         }
 
