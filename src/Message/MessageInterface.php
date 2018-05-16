@@ -5,11 +5,6 @@ namespace Qlimix\MessageBus\Message;
 interface MessageInterface
 {
     /**
-     * @return string
-     */
-    public function getId(): string;
-
-    /**
      * A unique message name with application naming space.
      * This is used to deserialize the message back into
      *  the message scheme object on the processing side.
