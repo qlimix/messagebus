@@ -45,7 +45,7 @@ final class DelegateToHandlerMiddleware implements MiddlewareInterface
         try {
             $service->{$locatedHandler->getMethod()}($message);
         } catch (\Throwable $exception) {
-            throw new MiddlewareException('Could not call handler associated with message', 0, $exception);
+            throw new MiddlewareException($locatedHandler->getHandler().'->'.$locatedHandler->getMethod().' failed', 0, $exception);
         }
     }
 }
