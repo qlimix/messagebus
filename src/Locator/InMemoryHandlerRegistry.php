@@ -5,7 +5,7 @@ namespace Qlimix\MessageBus\Locator;
 use Qlimix\MessageBus\Locator\Dto\Handler;
 use Qlimix\MessageBus\Locator\Exception\HandlerLocatorException;
 
-final class InMemoryHandlerLocator implements HandlerLocatorInterface
+final class InMemoryHandlerRegistry implements HandlerRegistryInterface
 {
     /** @var Handler[] */
     private $handlers = [];
@@ -21,7 +21,7 @@ final class InMemoryHandlerLocator implements HandlerLocatorInterface
     /**
      * @inheritDoc
      */
-    public function getHandler(string $messageName): Handler
+    public function find(string $messageName): Handler
     {
         foreach ($this->handlers as $message => $handler) {
             if ($message === $messageName) {

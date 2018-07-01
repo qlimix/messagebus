@@ -2,24 +2,24 @@
 
 namespace Qlimix\MessageBus\MessageBus\Middleware;
 
-use Qlimix\MessageBus\Locator\HandlerLocatorInterface;
+use Qlimix\MessageBus\Locator\HandlerRegistryInterface;
 use Qlimix\MessageBus\Locator\ServiceLocatorInterface;
 use Qlimix\MessageBus\Message\MessageInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 
 final class DelegateToHandlerMiddleware implements MiddlewareInterface
 {
-    /** @var HandlerLocatorInterface */
+    /** @var HandlerRegistryInterface */
     private $locator;
 
     /** @var ServiceLocatorInterface */
     private $serviceLocator;
 
     /**
-     * @param HandlerLocatorInterface $locator
+     * @param HandlerRegistryInterface $locator
      * @param ServiceLocatorInterface $serviceLocator
      */
-    public function __construct(HandlerLocatorInterface $locator, ServiceLocatorInterface $serviceLocator)
+    public function __construct(HandlerRegistryInterface $locator, ServiceLocatorInterface $serviceLocator)
     {
         $this->locator = $locator;
         $this->serviceLocator = $serviceLocator;
@@ -31,7 +31,7 @@ final class DelegateToHandlerMiddleware implements MiddlewareInterface
     public function handle(MessageInterface $message, MiddlewareHandlerInterface $handler): void
     {
         try {
-            $locatedHandler = $this->locator->getHandler(\get_class($message));
+            $locatedHandler = $this->locator->find(\get_class($message));
             $service = $this->serviceLocator->resolve($locatedHandler->getHandler());
         } catch (\Exception $exception) {
             throw new MiddlewareException('Failed to get message handler', 0, $exception);

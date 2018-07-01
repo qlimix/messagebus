@@ -5,14 +5,14 @@ namespace Qlimix\MessageBus\Locator;
 use Qlimix\MessageBus\Locator\Dto\Handler;
 use Qlimix\MessageBus\Locator\Exception\HandlerLocatorException;
 
-interface HandlerLocatorInterface
+interface HandlerRegistryInterface
 {
     /**
      * @param string $handler
      * @param string $messageName
      * @param string $method
      */
-    public function registerHandler(string $handler, string $messageName, string $method = 'handle'): void;
+    public function register(string $handler, string $messageName, string $method = 'handle'): void;
 
     /**
      * @param string $messageName
@@ -21,5 +21,5 @@ interface HandlerLocatorInterface
      *
      * @throws HandlerLocatorException
      */
-    public function getHandler(string $messageName): Handler;
+    public function find(string $messageName): Handler;
 }
