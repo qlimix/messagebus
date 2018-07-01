@@ -31,10 +31,15 @@ final class DelegateToHandlerMiddleware implements MiddlewareInterface
     public function handle(MessageInterface $message, MiddlewareHandlerInterface $handler): void
     {
         try {
-            $locatedHandler = $this->locator->find(\get_class($message));
-            $service = $this->serviceLocator->resolve($locatedHandler->getHandler());
-        } catch (\Exception $exception) {
+            $locatedHandler = $this->locator->find(get_class($message));
+        } catch (\Throwable $exception) {
             throw new MiddlewareException('Failed to get message handler', 0, $exception);
+        }
+
+        try {
+            $service = $this->serviceLocator->resolve($locatedHandler->getHandler());
+        } catch (\Throwable $exception) {
+            throw new MiddlewareException('Failed to resolve handler', 0, $exception);
         }
 
         try {
