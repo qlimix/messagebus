@@ -5,7 +5,6 @@ namespace Qlimix\MessageBus\MessageBus;
 use Qlimix\MessageBus\Message\MessageInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandlerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareInterface;
-use Qlimix\MessageBus\MessageBusInterface;
 
 final class MiddlewareMessageBus implements MessageBusInterface, MiddlewareHandlerInterface
 {

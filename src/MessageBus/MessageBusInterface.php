@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\MessageBus;
+namespace Qlimix\MessageBus\MessageBus;
 
 use Qlimix\MessageBus\Message\MessageInterface;
 
