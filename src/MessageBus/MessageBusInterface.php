@@ -2,12 +2,10 @@
 
 namespace Qlimix\MessageBus\MessageBus;
 
-use Qlimix\MessageBus\Message\MessageInterface;
-
 interface MessageBusInterface
 {
     /**
-     * @param MessageInterface $message
+     * @param mixed $message
      */
-    public function handle(MessageInterface $message): void;
+    public function handle($message): void;
 }
