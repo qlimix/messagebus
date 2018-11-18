@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\MessageBus\Locator\Dto;
+namespace Qlimix\MessageBus\Registry\Dto;
 
 final class Handler
 {

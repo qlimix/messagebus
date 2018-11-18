@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\MessageBus\Locator;
+namespace Qlimix\MessageBus\Registry;
 
-use Qlimix\MessageBus\Locator\Dto\Handler;
-use Qlimix\MessageBus\Locator\Exception\HandlerLocatorException;
+use Qlimix\MessageBus\Registry\Dto\Handler;
+use Qlimix\MessageBus\Registry\Exception\HandlerLocatorException;
 
-final class InMemoryHandlerRegistry implements HandlerRegistryInterface
+final class InMemoryHandlerRegistry implements HandlerRegistryInterface, HandlersProviderInterface
 {
     /** @var Handler[] */
     private $handlers = [];
@@ -21,12 +21,10 @@ final class InMemoryHandlerRegistry implements HandlerRegistryInterface
     /**
      * @inheritDoc
      */
-    public function find(string $messageName): Handler
+    public function find(string $messageName): array
     {
-        foreach ($this->handlers as $message => $handler) {
-            if ($message === $messageName) {
-                return $handler;
-            }
+        if (!empty($this->handlers[$messageName])) {
+            return [$this->handlers[$messageName]];
         }
 
         throw new HandlerLocatorException('Could not match '.$messageName);

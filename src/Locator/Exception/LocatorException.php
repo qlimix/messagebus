@@ -2,6 +2,6 @@
 
 namespace Qlimix\MessageBus\Locator\Exception;
 
-final class ServiceLocatorException extends \Exception
+final class LocatorException extends \Exception
 {
 }
