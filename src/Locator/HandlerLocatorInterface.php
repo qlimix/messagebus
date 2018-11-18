@@ -5,14 +5,14 @@ namespace Qlimix\MessageBus\Locator;
 use Qlimix\MessageBus\Locator\Dto\ExecutableHandler;
 use Qlimix\MessageBus\Locator\Exception\LocatorException;
 
-interface LocatorInterface
+interface HandlerLocatorInterface
 {
     /**
-     * @param string $handler
+     * @param string $messageId
      *
      * @return ExecutableHandler[]
      *
      * @throws LocatorException
      */
-    public function locate(string $handler): array;
+    public function locate(string $messageId): array;
 }
