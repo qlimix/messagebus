@@ -3,7 +3,7 @@
 namespace Qlimix\MessageBus\Registry;
 
 use Qlimix\MessageBus\Registry\Dto\Handler;
-use Qlimix\MessageBus\Registry\Exception\HandlerLocatorException;
+use Qlimix\MessageBus\Registry\Exception\HandlerProviderException;
 
 interface HandlersProviderInterface
 {
@@ -12,7 +12,7 @@ interface HandlersProviderInterface
      *
      * @return Handler[]
      *
-     * @throws HandlerLocatorException
+     * @throws HandlerProviderException
      */
     public function find(string $messageName): array;
 }

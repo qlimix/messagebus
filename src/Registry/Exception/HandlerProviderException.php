@@ -2,6 +2,6 @@
 
 namespace Qlimix\MessageBus\Registry\Exception;
 
-final class HandlerLocatorException extends \Exception
+final class HandlerProviderException extends \Exception
 {
 }

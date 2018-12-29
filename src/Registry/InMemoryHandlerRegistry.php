@@ -3,7 +3,7 @@
 namespace Qlimix\MessageBus\Registry;
 
 use Qlimix\MessageBus\Registry\Dto\Handler;
-use Qlimix\MessageBus\Registry\Exception\HandlerLocatorException;
+use Qlimix\MessageBus\Registry\Exception\HandlerProviderException;
 
 final class InMemoryHandlerRegistry implements HandlerRegistryInterface, HandlersProviderInterface
 {
@@ -27,6 +27,6 @@ final class InMemoryHandlerRegistry implements HandlerRegistryInterface, Handler
             return [$this->handlers[$messageName]];
         }
 
-        throw new HandlerLocatorException('Could not match '.$messageName);
+        throw new HandlerProviderException('Could not match '.$messageName);
     }
 }
