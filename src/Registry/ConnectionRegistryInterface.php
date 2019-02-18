@@ -2,7 +2,7 @@
 
 namespace Qlimix\MessageBus\Registry;
 
-interface ConnectRegistryInterface
+interface ConnectionRegistryInterface
 {
     public function register(ConnectionInterface $connect): void;
 }
