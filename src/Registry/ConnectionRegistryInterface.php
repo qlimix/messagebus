@@ -4,5 +4,5 @@ namespace Qlimix\MessageBus\Registry;
 
 interface ConnectRegistryInterface
 {
-    public function register(ConnectInterface $connect): void;
+    public function register(ConnectionInterface $connect): void;
 }
