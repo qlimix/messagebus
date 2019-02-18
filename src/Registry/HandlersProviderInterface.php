@@ -8,8 +8,6 @@ use Qlimix\MessageBus\Registry\Exception\HandlerProviderException;
 interface HandlersProviderInterface
 {
     /**
-     * @param string $messageName
-     *
      * @return Handler[]
      *
      * @throws HandlerProviderException

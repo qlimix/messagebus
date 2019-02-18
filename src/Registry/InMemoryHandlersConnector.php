@@ -4,7 +4,7 @@ namespace Qlimix\MessageBus\Registry;
 
 use Qlimix\MessageBus\Registry\Dto\Handler;
 
-final class InMemoryHandlersRegistry implements HandlerRegistryInterface, HandlersProviderInterface
+final class InMemoryHandlersConnector implements HandlerConnectorInterface, HandlersProviderInterface
 {
     /** @var Handler[][] */
     private $handlers = [];
@@ -12,9 +12,9 @@ final class InMemoryHandlersRegistry implements HandlerRegistryInterface, Handle
     /**
      * @inheritDoc
      */
-    public function register(string $handler, string $messageName, string $method = 'execute'): void
+    public function link(string $handlerName, string $messageName, string $method = 'handle'): void
     {
-        $this->handlers[$messageName][] = new Handler($handler, $method);
+        $this->handlers[$messageName][] = new Handler($handlerName, $method);
     }
 
     /**
