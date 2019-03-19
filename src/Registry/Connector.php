@@ -15,7 +15,7 @@ final class Connector
         $this->connections = $connections;
     }
 
-    public function connector(HandlerConnectorInterface $connector): void
+    public function connect(HandlerConnectorInterface $connector): void
     {
         foreach ($this->connections as $connection) {
             $connection->connect($connector);
