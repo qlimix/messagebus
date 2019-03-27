@@ -10,27 +10,17 @@ final class Handler
     /** @var string */
     private $method;
 
-    /**
-     * @param string $handler
-     * @param string $method
-     */
     public function __construct(string $handler, string $method)
     {
         $this->handler = $handler;
         $this->method = $method;
     }
 
-    /**
-     * @return string
-     */
     public function getHandler(): string
     {
         return $this->handler;
     }
 
-    /**
-     * @return string
-     */
     public function getMethod(): string
     {
         return $this->method;

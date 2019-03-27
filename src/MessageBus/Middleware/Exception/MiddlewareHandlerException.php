@@ -2,6 +2,8 @@
 
 namespace Qlimix\MessageBus\MessageBus\Middleware\Exception;
 
-final class MiddlewareHandlerException extends \Exception
+use Exception;
+
+final class MiddlewareHandlerException extends Exception
 {
 }

@@ -13,13 +13,7 @@
             "Qlimix\\MessageBus\\": "src/"
         }
     },
-    "require": {
-    },
-    "require-dev": {
-    },
     "config": {
         "sort-packages": true
-    },
-    "suggest": {
     }
 }

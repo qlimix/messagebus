@@ -8,8 +8,6 @@ use Qlimix\MessageBus\Locator\Exception\LocatorException;
 interface HandlerLocatorInterface
 {
     /**
-     * @param string $messageId
-     *
      * @return ExecutableHandler[]
      *
      * @throws LocatorException

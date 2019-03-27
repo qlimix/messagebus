@@ -4,6 +4,7 @@ namespace Qlimix\MessageBus\MessageBus;
 
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareContext;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareInterface;
+use Throwable;
 
 final class MiddlewareMessageBus implements MessageBusInterface
 {
@@ -26,7 +27,7 @@ final class MiddlewareMessageBus implements MessageBusInterface
         try {
             $context = new MiddlewareContext($this->middleware);
             $context->next($message, $context);
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
         }
     }
 }

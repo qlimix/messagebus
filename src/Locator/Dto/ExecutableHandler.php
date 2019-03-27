@@ -10,27 +10,17 @@ final class ExecutableHandler
     /** @var string */
     private $method;
 
-    /**
-     * @param object $handler
-     * @param string $method
-     */
     public function __construct(object $handler, string $method)
     {
         $this->handler = $handler;
         $this->method = $method;
     }
 
-    /**
-     * @return object
-     */
     public function getHandler(): object
     {
         return $this->handler;
     }
 
-    /**
-     * @return string
-     */
     public function getMethod(): string
     {
         return $this->method;

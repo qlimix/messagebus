@@ -2,6 +2,8 @@
 
 namespace Qlimix\MessageBus\MessageBus\Exception;
 
-final class MessageBusException extends \Exception
+use Exception;
+
+final class MessageBusException extends Exception
 {
 }

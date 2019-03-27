@@ -8,7 +8,6 @@ interface MiddlewareHandlerInterface
 {
     /**
      * @param mixed $message
-     * @param MiddlewareHandlerInterface $handler
      *
      * @throws MiddlewareException
      */

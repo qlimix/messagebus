@@ -10,9 +10,6 @@ final class DispatchMessageMiddleware implements MiddlewareInterface
     /** @var MessageDispatcherInterface */
     private $dispatcher;
 
-    /**
-     * @param MessageDispatcherInterface $dispatcher
-     */
     public function __construct(MessageDispatcherInterface $dispatcher)
     {
         $this->dispatcher = $dispatcher;
