@@ -4,6 +4,7 @@ namespace Qlimix\MessageBus\MessageBus\Middleware;
 
 use Qlimix\MessageBus\Dispatcher\MessageDispatcherInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
+use Throwable;
 
 final class DispatchMessageMiddleware implements MiddlewareInterface
 {
@@ -22,7 +23,7 @@ final class DispatchMessageMiddleware implements MiddlewareInterface
     {
         try {
             $this->dispatcher->dispatch($message);
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             throw new MiddlewareException('Failed to get message handler', 0, $exception);
         }
     }
