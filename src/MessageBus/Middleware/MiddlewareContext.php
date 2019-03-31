@@ -23,11 +23,11 @@ final class MiddlewareContext implements MiddlewareHandlerInterface
      */
     public function next($message, MiddlewareHandlerInterface $handler): void
     {
-        ++$this->pointer;
+        $this->pointer++;
         if (!isset($this->middleware[$this->pointer])) {
             return;
         }
 
-        $this->middleware[$this->pointer]->handle($message, $this);
+        $this->middleware[$this->pointer]->handle($message, $handler);
     }
 }
