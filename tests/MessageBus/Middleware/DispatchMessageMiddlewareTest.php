@@ -17,7 +17,7 @@ final class DispatchMessageMiddlewareTest extends TestCase
     /** @var DispatchMessageMiddleware */
     private $middleware;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->dispatcher = $this->createMock(MessageDispatcherInterface::class);
         $this->middleware = new DispatchMessageMiddleware($this->dispatcher);
