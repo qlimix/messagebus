@@ -18,6 +18,7 @@ final class DispatchMessageMiddleware implements MiddlewareInterface
 
     /**
      * @inheritDoc
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
      */
     public function handle($message, MiddlewareHandlerInterface $handler): void
     {

@@ -14,7 +14,9 @@
         }
     },
     "autoload-dev": {
-        "psr-4": { "Qlimix\\Tests\\MessageBus\\": "tests/" }
+        "psr-4": {
+            "Qlimix\\Tests\\MessageBus\\": "tests/"
+        }
     },
     "config": {
         "sort-packages": true

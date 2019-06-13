@@ -5,6 +5,7 @@ namespace Qlimix\MessageBus\Registry;
 use Qlimix\MessageBus\Registry\Dto\Handler;
 use Qlimix\MessageBus\Registry\Exception\HandlerConnectorException;
 use Qlimix\MessageBus\Registry\Exception\HandlerProviderException;
+use function sprintf;
 
 final class InMemoryHandlerConnector implements HandlerConnectorInterface, HandlerProviderInterface
 {
