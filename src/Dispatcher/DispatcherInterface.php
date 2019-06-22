@@ -2,10 +2,14 @@
 
 namespace Qlimix\MessageBus\Dispatcher;
 
-interface MessageDispatcherInterface
+use Qlimix\MessageBus\Dispatcher\Exception\DispatcherException;
+
+interface DispatcherInterface
 {
     /**
      * @param mixed $message
+     *
+     * @throws DispatcherException
      */
     public function dispatch($message): void;
 }

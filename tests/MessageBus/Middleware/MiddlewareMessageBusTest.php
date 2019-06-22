@@ -5,6 +5,7 @@ namespace Qlimix\Tests\MessageBus\MessageBus\Middleware;
 use Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Qlimix\MessageBus\Dispatcher\DispatcherInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandlerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareInterface;
 use Qlimix\MessageBus\MessageBus\MiddlewareMessageBus;
@@ -24,7 +25,12 @@ final class MiddlewareMessageBusTest extends TestCase
                 $handler->next($message, $handler);
             });
 
-        $messageBus = new MiddlewareMessageBus([$middleware]);
+        $dispatcher = $this->createMock(DispatcherInterface::class);
+
+        $dispatcher->expects($this->once())
+            ->method('dispatch');
+
+        $messageBus = new MiddlewareMessageBus([$middleware], $dispatcher);
 
         $messageBus->handle('message');
     }
@@ -40,6 +46,11 @@ final class MiddlewareMessageBusTest extends TestCase
             $this->createMock(MiddlewareInterface::class),
         ];
 
+        $dispatcher = $this->createMock(DispatcherInterface::class);
+
+        $dispatcher->expects($this->once())
+            ->method('dispatch');
+
         foreach ($middleware as $item) {
             $item->expects($this->once())
                 ->method('handle')
@@ -48,7 +59,7 @@ final class MiddlewareMessageBusTest extends TestCase
                 });
         }
 
-        $messageBus = new MiddlewareMessageBus($middleware);
+        $messageBus = new MiddlewareMessageBus($middleware, $dispatcher);
 
 
         $messageBus->handle('message');
@@ -65,6 +76,11 @@ final class MiddlewareMessageBusTest extends TestCase
             $this->createMock(MiddlewareInterface::class),
         ];
 
+        $dispatcher = $this->createMock(DispatcherInterface::class);
+
+        $dispatcher->expects($this->once())
+            ->method('dispatch');
+
         $order = [];
 
         $i = 0;
@@ -78,7 +94,7 @@ final class MiddlewareMessageBusTest extends TestCase
                 });
         }
 
-        $messageBus = new MiddlewareMessageBus($middleware);
+        $messageBus = new MiddlewareMessageBus($middleware, $dispatcher);
 
         $messageBus->handle('message');
         $this->assertEquals([0, 1, 2], $order);
@@ -91,11 +107,13 @@ final class MiddlewareMessageBusTest extends TestCase
     {
         $middleware = $this->createMock(MiddlewareInterface::class);
 
+        $dispatcher = $this->createMock(DispatcherInterface::class);
+
         $middleware->expects($this->once())
             ->method('handle')
             ->willThrowException(new Exception());
 
-        $messageBus = new MiddlewareMessageBus([$middleware]);
+        $messageBus = new MiddlewareMessageBus([$middleware], $dispatcher);
 
         $messageBus->handle('message');
     }

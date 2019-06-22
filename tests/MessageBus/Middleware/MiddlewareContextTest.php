@@ -4,6 +4,7 @@ namespace Qlimix\Tests\MessageBus\MessageBus\Middleware;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Qlimix\MessageBus\Dispatcher\DispatcherInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareContext;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandlerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareInterface;
@@ -23,7 +24,12 @@ final class MiddlewareContextTest extends TestCase
                 $handler->next($message, $handler);
             });
 
-        $middlewareContext = new MiddlewareContext([$middleware]);
+        $dispatcher = $this->createMock(DispatcherInterface::class);
+
+        $dispatcher->expects($this->once())
+            ->method('dispatch');
+
+        $middlewareContext = new MiddlewareContext([$middleware], $dispatcher);
 
         $middlewareContext->next('message', $middlewareContext);
     }
@@ -39,6 +45,11 @@ final class MiddlewareContextTest extends TestCase
             $this->createMock(MiddlewareInterface::class),
         ];
 
+        $dispatcher = $this->createMock(DispatcherInterface::class);
+
+        $dispatcher->expects($this->once())
+            ->method('dispatch');
+
         /** @var MockObject $item */
         foreach ($middleware as $item) {
             $item->expects($this->once())
@@ -48,7 +59,7 @@ final class MiddlewareContextTest extends TestCase
                 });
         }
 
-        $middlewareContext = new MiddlewareContext($middleware);
+        $middlewareContext = new MiddlewareContext($middleware, $dispatcher);
 
         $middlewareContext->next('message', $middlewareContext);
     }
