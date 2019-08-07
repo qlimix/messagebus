@@ -26,6 +26,7 @@ final class MiddlewareMessageBus implements MessageBusInterface
 
     /**
      * @inheritDoc
+     * @SuppressWarnings(PHPMD.EmptyCatchBlock)
      */
     public function handle($message): void
     {
