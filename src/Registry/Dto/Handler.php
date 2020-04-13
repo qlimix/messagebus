@@ -4,11 +4,9 @@ namespace Qlimix\MessageBus\Registry\Dto;
 
 final class Handler
 {
-    /** @var string */
-    private $handler;
+    private string $handler;
 
-    /** @var string */
-    private $method;
+    private string $method;
 
     public function __construct(string $handler, string $method)
     {

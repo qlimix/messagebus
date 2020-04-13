@@ -7,7 +7,7 @@ use Qlimix\MessageBus\Registry\Dto\Handler;
 final class InMemoryHandlersConnector implements HandlerConnectorInterface, HandlersProviderInterface
 {
     /** @var Handler[][] */
-    private $handlers = [];
+    private array $handlers = [];
 
     /**
      * @inheritDoc
