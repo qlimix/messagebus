@@ -7,10 +7,7 @@ use Qlimix\MessageBus\Registry\InMemoryHandlersConnector;
 
 final class InMemoryHandlersConnectorTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldLinkAndFindMultipleHandler(): void
+    public function testShouldLinkAndFindMultipleHandler(): void
     {
         $message = 'message';
         $handler = 'handler';
@@ -28,10 +25,7 @@ final class InMemoryHandlersConnectorTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function shouldLinkAndFindSingleHandler(): void
+    public function testShouldLinkAndFindSingleHandler(): void
     {
         $message = 'message';
         $handler = 'handler';
@@ -48,10 +42,7 @@ final class InMemoryHandlersConnectorTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
-    public function shouldThrowOnNoHandlerFound(): void
+    public function testShouldThrowOnNoHandlerFound(): void
     {
         $handlerConnector = new InMemoryHandlersConnector();
 

@@ -11,10 +11,7 @@ use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareInterface;
 
 final class MiddlewareContextTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldHandleMessageWithSingleMiddleware(): void
+    public function testShouldHandleMessageWithSingleMiddleware(): void
     {
         $middleware = $this->createMock(MiddlewareInterface::class);
 
@@ -34,10 +31,7 @@ final class MiddlewareContextTest extends TestCase
         $middlewareContext->next('message', $middlewareContext);
     }
 
-    /**
-     * @test
-     */
-    public function shouldPassMessageThroughMiddleware(): void
+    public function testShouldPassMessageThroughMiddleware(): void
     {
         $middleware = [
             $this->createMock(MiddlewareInterface::class),
