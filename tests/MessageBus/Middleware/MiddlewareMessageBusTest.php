@@ -12,10 +12,7 @@ use Qlimix\MessageBus\MessageBus\MiddlewareMessageBus;
 
 final class MiddlewareMessageBusTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldHandleMessageWithSingleMiddleware(): void
+    public function testShouldHandleMessageWithSingleMiddleware(): void
     {
         $middleware = $this->createMock(MiddlewareInterface::class);
 
@@ -35,10 +32,7 @@ final class MiddlewareMessageBusTest extends TestCase
         $messageBus->handle('message');
     }
 
-    /**
-     * @test
-     */
-    public function shouldPassMessageThroughMiddleware(): void
+    public function testShouldPassMessageThroughMiddleware(): void
     {
         $middleware = [
             $this->createMock(MiddlewareInterface::class),
@@ -65,10 +59,7 @@ final class MiddlewareMessageBusTest extends TestCase
         $messageBus->handle('message');
     }
 
-    /**
-     * @test
-     */
-    public function shouldHandleMiddlewareInOrder(): void
+    public function testShouldHandleMiddlewareInOrder(): void
     {
         $middleware = [
             $this->createMock(MiddlewareInterface::class),
@@ -100,10 +91,7 @@ final class MiddlewareMessageBusTest extends TestCase
         $this->assertEquals([0, 1, 2], $order);
     }
 
-    /**
-     * @test
-     */
-    public function shouldNeverThrow(): void
+    public function testShouldNeverThrow(): void
     {
         $middleware = $this->createMock(MiddlewareInterface::class);
 

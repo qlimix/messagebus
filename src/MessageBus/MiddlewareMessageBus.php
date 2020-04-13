@@ -10,10 +10,9 @@ use Throwable;
 final class MiddlewareMessageBus implements MessageBusInterface
 {
     /** @var MiddlewareInterface[] */
-    private $middleware;
+    private array $middleware;
 
-    /** @var DispatcherInterface */
-    private $dispatcher;
+    private DispatcherInterface $dispatcher;
 
     /**
      * @param MiddlewareInterface[] $middleware

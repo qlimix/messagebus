@@ -10,7 +10,7 @@ use function sprintf;
 final class InMemoryHandlerConnector implements HandlerConnectorInterface, HandlerProviderInterface
 {
     /** @var Handler[] */
-    private $handlers = [];
+    private array $handlers = [];
 
     /**
      * @inheritDoc

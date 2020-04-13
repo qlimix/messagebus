@@ -8,10 +8,7 @@ use stdClass;
 
 final class ExecutableHandlerTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldDto(): void
+    public function testShouldDto(): void
     {
         $object = new stdClass();
         $method = 'foo';

@@ -8,13 +8,11 @@ use Qlimix\MessageBus\Dispatcher\Exception\DispatcherException;
 final class MiddlewareContext implements MiddlewareHandlerInterface
 {
     /** @var MiddlewareInterface[] */
-    private $middleware;
+    private array $middleware;
 
-    /** @var DispatcherInterface */
-    private $dispatcher;
+    private DispatcherInterface $dispatcher;
 
-    /** @var int */
-    private $pointer = -1;
+    private int $pointer = -1;
 
     /**
      * @param MiddlewareInterface[] $middleware
@@ -35,6 +33,7 @@ final class MiddlewareContext implements MiddlewareHandlerInterface
         $this->pointer++;
         if (!isset($this->middleware[$this->pointer])) {
             $this->dispatcher->dispatch($message);
+
             return;
         }
 

@@ -4,11 +4,9 @@ namespace Qlimix\MessageBus\Locator\Dto;
 
 final class ExecutableHandler
 {
-    /** @var object */
-    private $handler;
+    private object $handler;
 
-    /** @var string */
-    private $method;
+    private string $method;
 
     public function __construct(object $handler, string $method)
     {

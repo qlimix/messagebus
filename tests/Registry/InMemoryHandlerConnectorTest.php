@@ -9,10 +9,7 @@ use Qlimix\MessageBus\Registry\InMemoryHandlerConnector;
 
 final class InMemoryHandlerConnectorTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldLinkAndFindHandler(): void
+    public function testShouldLinkAndFindHandler(): void
     {
         $message = 'message';
         $handler = 'handler';
@@ -27,10 +24,7 @@ final class InMemoryHandlerConnectorTest extends TestCase
         $this->assertSame($foundHandler->getMethod(), $method);
     }
 
-    /**
-     * @test
-     */
-    public function shouldThrowOnDuplicateMessageHandler(): void
+    public function testShouldThrowOnDuplicateMessageHandler(): void
     {
         $message = 'message';
         $handler = 'handler';
@@ -43,10 +37,7 @@ final class InMemoryHandlerConnectorTest extends TestCase
         $handlerConnector->link('other', $message);
     }
 
-    /**
-     * @test
-     */
-    public function shouldThrowOnNoHandlerFound(): void
+    public function testShouldThrowOnNoHandlerFound(): void
     {
         $handlerConnector = new InMemoryHandlerConnector();
 

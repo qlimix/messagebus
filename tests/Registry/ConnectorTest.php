@@ -10,10 +10,7 @@ use Qlimix\MessageBus\Registry\HandlerConnectorInterface;
 
 final class ConnectorTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function shouldConnectSingle(): void
+    public function testShouldConnectSingle(): void
     {
         $connection = $this->createMock(ConnectionInterface::class);
 
@@ -27,10 +24,7 @@ final class ConnectorTest extends TestCase
         $connector->connect($handlerConnector);
     }
 
-    /**
-     * @test
-     */
-    public function shouldConnectMultiple(): void
+    public function testShouldConnectMultiple(): void
     {
         $connections = [
             $this->createMock(ConnectionInterface::class),
