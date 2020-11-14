@@ -1,3 +1,8 @@
+## 2.0.3 - 14-11-2020
+
+### Compatibility
+ - Changed from >=7.4 to >7.4 to include 8 soon 
+ 
 ## 2.0.2 - 14-11-2020
 
 ### Bug fixes
