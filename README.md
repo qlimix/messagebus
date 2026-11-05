@@ -1,5 +1,7 @@
 # Messagebus
 
+> **Archived:** this package is no longer maintained.
+
 [![Travis CI](https://api.travis-ci.org/qlimix/messagebus.svg?branch=master)](https://travis-ci.org/qlimix/messagebus)
 [![Coveralls](https://img.shields.io/coveralls/github/qlimix/messagebus.svg)](https://coveralls.io/github/qlimix/messagebus)
 [![Packagist](https://img.shields.io/packagist/v/qlimix/messagebus.svg)](https://packagist.org/packages/qlimix/messagebus)
